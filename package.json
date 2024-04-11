@@ -1,0 +1,12 @@
+{
+	"name": "git-stat",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"server:dev": "pnpm -C apps/server start:dev"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC"
+}
