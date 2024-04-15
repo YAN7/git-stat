@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
-import { readFileSync, writeFileSync } from 'fs';
+import { readdirSync, readFileSync, writeFileSync } from 'fs';
 
 @Controller('git-stat')
 export class GitStatController {
@@ -13,6 +13,10 @@ export class GitStatController {
       JSON.stringify(appConfig, null, 2),
       'utf-8',
     );
+    return {
+      status: 1,
+      message: '设置成功',
+    };
   }
 
   @Get('queryDate')
@@ -22,7 +26,12 @@ export class GitStatController {
   }
 
   @Post('collect')
-  lala() {
+  lala(@Body() submitDto) {
+    const archive = readdirSync('./archive');
+    const { startDate, endDate } = submitDto;
+    const filename = `${startDate}-${endDate}.json`;
+    const file = readFileSync(`./archive1/${filename}`);
+    console.log('file ==> ', file.toString());
     return '456';
   }
 }
