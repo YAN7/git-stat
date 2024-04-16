@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query } from '@nestjs/common';
 import { readFileSync, writeFileSync } from 'fs';
 import { mkdir, readdir, readFile, writeFile } from 'fs/promises';
 
@@ -30,10 +30,10 @@ export class GitStatController {
     const { username, addLines, removeLines, totalLines } = submitInfo;
     if (!source[username]) {
       source[username] = {
-        projects: [submitInfo],
         addLines,
         removeLines,
         totalLines,
+        projects: [submitInfo],
       };
       return source;
     }
@@ -76,9 +76,7 @@ export class GitStatController {
 
   @Post('collect')
   async lala(@Body() submitDto) {
-    const res = await readdir('./archive').catch((err) =>
-      console.log('err', err),
-    );
+    const res = await readdir('./archive').catch(console.log);
     if (res === undefined) {
       await mkdir('./archive');
     }
@@ -87,9 +85,7 @@ export class GitStatController {
     submitDto.removeLines = parseInt(submitDto.removeLines || 0);
     submitDto.totalLines = parseInt(submitDto.totalLines || 0);
     const filePath = `./archive/${startDate}-${endDate}.json`;
-    const file = await readFile(filePath).catch((err) =>
-      console.log('err', err),
-    );
+    const file = await readFile(filePath).catch(console.log);
     if (!file) {
       const newData = this.updateSubmitInfo({}, submitDto);
       await writeFile(filePath, JSON.stringify(newData, null, 2));
@@ -100,5 +96,19 @@ export class GitStatController {
       await writeFile(filePath, JSON.stringify(newData, null, 2));
       return { status: 1, message: '保存成功' };
     }
+  }
+
+  @Get('querySubmitInfo')
+  async uu(@Query() queryParams) {
+    const { startDate, endDate } = queryParams;
+    const filePath = `./archive/${startDate}-${endDate}.json`;
+    const file = await readFile(filePath).catch(console.log);
+    if (!file) {
+      return {
+        status: 0,
+        message: '此时间区间提交信息不存在',
+      };
+    }
+    return JSON.parse(file.toString());
   }
 }
