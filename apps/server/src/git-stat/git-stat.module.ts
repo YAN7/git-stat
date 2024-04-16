@@ -4,6 +4,6 @@ import { GitStatService } from './git-stat.service';
 
 @Module({
   controllers: [GitStatController],
-  providers: [GitStatService]
+  providers: [GitStatService],
 })
 export class GitStatModule {}
