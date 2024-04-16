@@ -1,0 +1,52 @@
+{
+  "何宇航": {
+    "projects": [
+      {
+        "startDate": "2024_04_06",
+        "endDate": "2024_04_16",
+        "addLines": 111,
+        "removeLines": 10,
+        "totalLines": 150,
+        "submitTimes": 10,
+        "projectName": "经营管理",
+        "username": "何宇航",
+        "gitUsername": "YAN7",
+        "projectCode": "lala"
+      }
+    ],
+    "addLines": 111,
+    "removeLines": 10,
+    "totalLines": 150
+  },
+  "何宇航1": {
+    "projects": [
+      {
+        "startDate": "2024_04_06",
+        "endDate": "2024_04_16",
+        "addLines": 111,
+        "removeLines": 10,
+        "totalLines": 150,
+        "submitTimes": 10,
+        "projectName": "经营管理",
+        "username": "何宇航1",
+        "gitUsername": "YAN7",
+        "projectCode": "lala"
+      },
+      {
+        "startDate": "2024_04_06",
+        "endDate": "2024_04_16",
+        "addLines": 111,
+        "removeLines": 10,
+        "totalLines": 150,
+        "submitTimes": 10,
+        "projectName": "经营管理",
+        "username": "何宇航1",
+        "gitUsername": "YAN7",
+        "projectCode": "hehe"
+      }
+    ],
+    "addLines": 222,
+    "removeLines": 20,
+    "totalLines": 300
+  }
+}
