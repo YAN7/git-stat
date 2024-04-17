@@ -37,4 +37,12 @@ export class GitStatController {
   async getSubmitInfo(@Query() dateRange) {
     return await this.gitStatService.getSubmitInfo(dateRange);
   }
+
+  /**
+   * 根据时间区间导出提交信息
+   */
+  @Get('exportSubmitInfo')
+  async exportSubmitInfo(@Query() dateRange) {
+    return await this.gitStatService.exportSubmitInfo(dateRange);
+  }
 }

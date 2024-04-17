@@ -10,7 +10,18 @@ import { SubmitPramsKey } from './git-stat.types';
 
 @Injectable()
 export class GitStatService {
+  validateDateRangeParams(dateRange: StatDateRangeDto) {
+    const { startDate, endDate } = dateRange;
+    if (!startDate) {
+      throwHttpError('startDate不能为空', 400);
+    }
+    if (!endDate) {
+      throwHttpError('endDate不能为空', 400);
+    }
+  }
+
   async setDateRange(dateRange: StatDateRangeDto) {
+    this.validateDateRangeParams(dateRange);
     const dateConfig = await readFile2JSON(DATE_CONFIG_PATH);
     dateConfig.startDate = dateRange.startDate;
     dateConfig.endDate = dateRange.endDate;
@@ -77,6 +88,7 @@ export class GitStatService {
   }
 
   async getSubmitInfo(dateRange: StatDateRangeDto) {
+    this.validateDateRangeParams(dateRange);
     const { startDate, endDate } = dateRange;
     const filePath = `${ARCHIVE_PATH}/${startDate}-${endDate}.json`;
     const fileContent = await readFile(filePath).catch(console.log);
@@ -87,5 +99,16 @@ export class GitStatService {
       status: StatusCode.SUCCESS,
       data: JSON.parse(fileContent.toString()),
     };
+  }
+
+  async exportSubmitInfo(dateRange: StatDateRangeDto) {
+    this.validateDateRangeParams(dateRange);
+    const { startDate, endDate } = dateRange;
+    const filePath = `${ARCHIVE_PATH}/${startDate}-${endDate}.json`;
+    const fileContent = await readFile(filePath).catch(console.log);
+    if (!fileContent) {
+      return throwHttpError('此时间区间提交信息不存在');
+    }
+    return 123;
   }
 }
