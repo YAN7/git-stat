@@ -1,4 +1,5 @@
 import { Body, Controller, Get, Post, Query } from '@nestjs/common';
+import { StatDateRangeDto } from './git-stat.dto';
 import { GitStatService } from './git-stat.service';
 
 @Controller('git-stat')
@@ -9,16 +10,16 @@ export class GitStatController {
    * 设置统计提交信息的时间区间
    */
   @Post('setDateRange')
-  setDateRange(@Body() body) {
-    return this.gitStatService.setDateRange(body);
+  async setDateRange(@Body() body: StatDateRangeDto) {
+    return await this.gitStatService.setDateRange(body);
   }
 
   /**
    * 获取时间区间
    */
   @Get('getDateRange')
-  queryDateRange() {
-    return this.queryDateRange();
+  async queryDateRange() {
+    return await this.gitStatService.queryDateRange();
   }
 
   /**
@@ -26,7 +27,7 @@ export class GitStatController {
    */
   @Post('submit')
   async submit(@Body() submitDto) {
-    return this.gitStatService.submit(submitDto);
+    return await this.gitStatService.submit(submitDto);
   }
 
   /**
@@ -34,6 +35,6 @@ export class GitStatController {
    */
   @Get('getSubmitInfo')
   async getSubmitInfo(@Query() dateRange) {
-    this.gitStatService.getSubmitInfo(dateRange);
+    return await this.gitStatService.getSubmitInfo(dateRange);
   }
 }

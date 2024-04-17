@@ -1,63 +1,91 @@
 import { Injectable } from '@nestjs/common';
-import { readFileSync, writeFileSync } from 'fs';
-import { mkdir, readdir, readFile, writeFile } from 'fs/promises';
+import { readFile } from 'fs/promises';
 import { updateSubmitInfo } from 'src/utils';
+import { mkdirIfNotExist, readFile2JSON, writeFile2JSON } from 'src/utils/file';
+import { throwHttpError } from 'src/utils/http';
+import { ARCHIVE_PATH, DATE_CONFIG_PATH } from './constants';
+import { StatusCode } from './emun';
+import { GitStatSubmitDto, StatDateRangeDto } from './git-stat.dto';
+import { SubmitPramsKey } from './git-stat.types';
 
 @Injectable()
 export class GitStatService {
-  setDateRange(body) {
-    const appConfig = JSON.parse(readFileSync('./date.config.json').toString());
-    appConfig.startDate = body.startDate;
-    appConfig.endDate = body.endDate;
-    writeFileSync(
-      './date.config.json',
-      JSON.stringify(appConfig, null, 2),
-      'utf-8',
-    );
+  async setDateRange(dateRange: StatDateRangeDto) {
+    const dateConfig = await readFile2JSON(DATE_CONFIG_PATH);
+    dateConfig.startDate = dateRange.startDate;
+    dateConfig.endDate = dateRange.endDate;
+    await writeFile2JSON(DATE_CONFIG_PATH, dateConfig);
     return {
-      status: 1,
+      status: StatusCode.SUCCESS,
       message: '设置成功',
     };
   }
 
-  queryDateRange() {
-    const appConfig = JSON.parse(readFileSync('./date.config.json').toString());
-    return appConfig;
+  async queryDateRange() {
+    const dateRange = await readFile2JSON(DATE_CONFIG_PATH);
+    return {
+      status: StatusCode.SUCCESS,
+      message: 'success',
+      ...dateRange,
+    };
   }
 
-  async submit(submitDto) {
-    const res = await readdir('./archive').catch(console.log);
-    if (res === undefined) {
-      await mkdir('./archive');
-    }
+  validateSubmitParams(submitDto: GitStatSubmitDto) {
+    const requiredParams: Partial<SubmitPramsKey>[] = [
+      'startDate',
+      'endDate',
+      'gitUsername',
+      'projectName',
+      'projectCode',
+      'username',
+      'addLines',
+      'removeLines',
+      'totalLines',
+      'submitTimes',
+    ];
+    requiredParams.forEach((k) => {
+      if (submitDto[k] === '' || submitDto[k] === undefined) {
+        throwHttpError(`${k}不能为空`, 400);
+      }
+    });
+  }
+
+  ensureSubmitParamsCorrect(submitDto: GitStatSubmitDto) {
+    submitDto.addLines = Number(submitDto.addLines || 0);
+    submitDto.removeLines = Number(submitDto.removeLines || 0);
+    submitDto.totalLines = Number(submitDto.totalLines || 0);
+    submitDto.submitTimes = Number(submitDto.submitTimes || 0);
+  }
+
+  async submit(submitDto: GitStatSubmitDto) {
+    // 校验参数
+    this.validateSubmitParams(submitDto);
+    // 确保archive文件夹存在
+    mkdirIfNotExist(ARCHIVE_PATH);
+    // 确保入参正确
+    this.ensureSubmitParamsCorrect(submitDto);
+
     const { startDate, endDate } = submitDto;
-    submitDto.addLines = parseInt(submitDto.addLines || 0);
-    submitDto.removeLines = parseInt(submitDto.removeLines || 0);
-    submitDto.totalLines = parseInt(submitDto.totalLines || 0);
-    const filePath = `./archive/${startDate}-${endDate}.json`;
+    const filePath = `${ARCHIVE_PATH}/${startDate}-${endDate}.json`;
     const file = await readFile(filePath).catch(console.log);
-    if (!file) {
-      const newData = updateSubmitInfo({}, submitDto);
-      await writeFile(filePath, JSON.stringify(newData, null, 2));
-      return { status: 1, message: '保存成功' };
-    } else {
-      const currData = JSON.parse(file.toString());
-      const newData = updateSubmitInfo(currData, submitDto);
-      await writeFile(filePath, JSON.stringify(newData, null, 2));
-      return { status: 1, message: '保存成功' };
-    }
+
+    // 对应的json文件不存在则默认是{}
+    const currData = file ? JSON.parse(file.toString()) : {};
+    const newData = updateSubmitInfo(currData, submitDto);
+    await writeFile2JSON(filePath, newData);
+    return { status: StatusCode.SUCCESS, message: '提交成功' };
   }
 
-  async getSubmitInfo(queryParams) {
-    const { startDate, endDate } = queryParams;
-    const filePath = `./archive/${startDate}-${endDate}.json`;
-    const file = await readFile(filePath).catch(console.log);
-    if (!file) {
-      return {
-        status: 0,
-        message: '此时间区间提交信息不存在',
-      };
+  async getSubmitInfo(dateRange: StatDateRangeDto) {
+    const { startDate, endDate } = dateRange;
+    const filePath = `${ARCHIVE_PATH}/${startDate}-${endDate}.json`;
+    const fileContent = await readFile(filePath).catch(console.log);
+    if (!fileContent) {
+      return throwHttpError('此时间区间提交信息不存在');
     }
-    return JSON.parse(file.toString());
+    return {
+      status: StatusCode.SUCCESS,
+      data: JSON.parse(fileContent.toString()),
+    };
   }
 }
