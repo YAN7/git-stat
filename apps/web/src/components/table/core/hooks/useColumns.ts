@@ -4,10 +4,10 @@ import { computed, ref, unref, watch } from 'vue'
 const handleItem = (col: any) => {
   const defaultType = col.type === 'selection' || col.type === 'index' || col.type === 'expand'
   return {
+    align: 'center',
     showOverflowTooltip: true,
     ...(defaultType ? {} : { minWidth: 120 }),
     ...col,
-    align: 'center',
   }
 }
 

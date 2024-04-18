@@ -1,6 +1,5 @@
 import axios from 'axios'
-import type { AxiosResponse } from 'axios'
-import { getFileTypeByName, handlerResponseError, getContentType } from './helper'
+import { getContentType, getFileTypeByName, handlerResponseError } from './helper'
 import {
   defaultRequestInterceptors,
   defaultResponseErrorInterceptors,
@@ -14,7 +13,7 @@ class Http {
 
   constructor() {
     this.axiosInstance = axios.create({
-      baseURL: '/itom',
+      baseURL: '/git-stat',
       timeout: 30000,
       timeoutErrorMessage: '请求超时',
       withCredentials: true,
@@ -38,24 +37,24 @@ class Http {
 
   async put(url: string, body?: object) {
     const res = await this.axiosInstance.put(url, body)
-    return res
+    return res.data
   }
 
   async delete(url: string, data?: object) {
     const res = await this.axiosInstance.delete(url, { data })
-    return res
+    return res.data
   }
 
   async postFile(url: string, body?: any) {
     const res = await this.axiosInstance.post(url, body, {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     })
-    return res
+    return res.data
   }
 
   async get(url: string, params?: object) {
     const res = await this.axiosInstance.get(url, { params })
-    return res
+    return res.data
   }
 
   /**

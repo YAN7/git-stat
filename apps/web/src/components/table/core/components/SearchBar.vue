@@ -4,6 +4,7 @@
     :model="props.model"
     :rules="rules"
     :label-width="100"
+    :gutter="0"
     ref="formRef"
     v-bind="formProps"
   >
@@ -33,6 +34,7 @@
               computedSchema.length > computedCols && computedSchema.length % computedCols !== 0
             "
             class="!justify-end"
+            :showResetBtn="showResetBtn"
             :showCollapsedBtn="schema.length > shouldShowCollapsedBtn"
             :collapsed="collapsed"
             :hiddenDefaultBtns="hiddenDefaultBtns"
@@ -45,6 +47,7 @@
       <!-- 筛选项小于三个时的情况 -->
       <default-buttons
         v-if="computedSchema.length < computedCols"
+        :showResetBtn="showResetBtn"
         :hiddenDefaultBtns="hiddenDefaultBtns"
         @search="search"
         @reset="reset"
@@ -59,6 +62,7 @@
         <!-- 筛选项刚好占满行的情况 -->
         <default-buttons
           v-if="computedSchema.length >= computedCols && computedSchema.length % computedCols === 0"
+          :showResetBtn="showResetBtn"
           :hiddenDefaultBtns="hiddenDefaultBtns"
           :showCollapsedBtn="schema.length > shouldShowCollapsedBtn"
           :collapsed="collapsed"
@@ -86,6 +90,7 @@ const props = withDefaults(defineProps<FinanceFormPropsType>(), {
   options: {},
   rules: () => ({}),
   hiddenDefaultBtns: false,
+  showResetBtn: true,
 })
 
 const emits = defineEmits(['search', 'reset'])

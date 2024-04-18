@@ -8,6 +8,7 @@
       :cols="cols"
       :limit="limit"
       :hiddenDefaultBtns="hiddenDefaultBtns"
+      :showResetBtn="showResetBtn"
       v-bind="formOptions"
       v-if="showSearchForm"
       @search="search"
@@ -57,6 +58,7 @@
       </div>
       <cs-pagination
         background
+        v-if="showPagination"
         class="flex justify-end"
         popper-class="table-pagination"
         :total="listSource.total"
@@ -69,14 +71,14 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 import FinanceSearchBar from './components/SearchBar.vue'
 
-import usePagination from './hooks/usePagination'
-import useDataSource from './hooks/useDataSource'
 import useColumns from './hooks/useColumns'
-import useSearchForm from './hooks/useSearchForm'
+import useDataSource from './hooks/useDataSource'
 import useLoading from './hooks/useLoading'
+import usePagination from './hooks/usePagination'
+import useSearchForm from './hooks/useSearchForm'
 
 const props = withDefaults(
   defineProps<{
@@ -96,12 +98,16 @@ const props = withDefaults(
     hiddenDefaultBtns?: boolean
     cols?: 1 | 2 | 3 | 4
     limit?: number
+    showPagination?: boolean
+    showResetBtn?: boolean
   }>(),
   {
     immediate: true,
-    showSearchForm: true,
     queryType: 'post',
+    showPagination: true,
+    showSearchForm: true,
     hiddenDefaultBtns: false,
+    showResetBtn: true,
   },
 )
 

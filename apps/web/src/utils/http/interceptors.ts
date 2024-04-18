@@ -29,7 +29,7 @@ export const defaultResponseErrorInterceptors = (error: any) => {
   } else if (status === 403) {
     window.$message.error('403: 没有权限访问')
   } else if (status === 400) {
-    window.$message.error('400: 请求参数错误')
+    window.$message.error(`400: ${message}`)
   } else {
     window.$message.error(message ?? error.message ?? '请求报错了，请联系技术人员或稍后重试')
   }

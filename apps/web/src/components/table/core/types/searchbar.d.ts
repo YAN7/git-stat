@@ -1,23 +1,23 @@
 import { ElDatePicker, ElSelect, ElTimePicker, ElTreeSelect } from 'element-plus'
 
-import FinanceSelect from '@/components/form-item/finance-select.vue'
-import FinanceRadio from '@/components/form-item/finance-radio.vue'
 import FinanceCheckbox from '@/components/form-item/finance-checkbox.vue'
-import FinanceDivider from '@/components/form-item/finance-divider.vue'
-import FinanceTransfer from '@/components/form-item/finance-transfer.vue'
-import FinanceOrgTree from '@/components/form-item/finance-org-tree.vue'
 import FinanceCollapseItem from '@/components/form-item/finance-collapse-item.vue'
+import FinanceDivider from '@/components/form-item/finance-divider.vue'
+import FinanceOrgTree from '@/components/form-item/finance-org-tree.vue'
+import FinanceRadio from '@/components/form-item/finance-radio.vue'
+import FinanceSelect from '@/components/form-item/finance-select.vue'
+import FinanceTransfer from '@/components/form-item/finance-transfer.vue'
 import FinanceUserSelect from '@/components/form-item/finance-user-select.vue'
 
 import type {
-  FormItemRule,
   ButtonInstance,
-  InputInstance,
   CascaderInstance,
   CheckboxInstance,
   ColInstance,
-  InputNumberInstance,
   FormInstance,
+  FormItemRule,
+  InputInstance,
+  InputNumberInstance,
   RadioInstance,
   SwitchInstance,
   TransferInstance,
@@ -140,4 +140,5 @@ export type FinanceFormPropsType = {
   // prettier-ignore
   span?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24
   limit?: number
+  showResetBtn?: boolean
 }

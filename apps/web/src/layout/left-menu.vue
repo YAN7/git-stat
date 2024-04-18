@@ -19,14 +19,14 @@
   </div>
 </template>
 <script setup lang="ts">
-import { Link, DataBoard } from '@element-plus/icons-vue'
+import { DataBoard, Link } from '@element-plus/icons-vue'
 
-import MenuItem from './menu-item.vue'
 import { useAppStore } from '@/stores/app'
+import MenuItem from './menu-item.vue'
 
-import type { Menu } from './layout'
+import { IconHome } from '@/components/icons'
 import { computed } from 'vue'
-import { IconMenuList, IconHome, IconMenuForm, IconMenuOa, IconWarning } from '@/components/icons'
+import type { Menu } from './layout'
 
 const appStore = useAppStore()
 
@@ -36,53 +36,6 @@ const menus: Record<string, Menu[]> = {
       title: '看板',
       route: '/dashboard',
       icon: IconHome,
-      // children: [
-      //   {
-      //     title: '很长很长很长很长很长很长很长的首页',
-      //     route: '/dashboard',
-      //   },
-      // ],
-    },
-    {
-      title: '列表页',
-      route: '/list',
-      icon: IconMenuList,
-      children: [
-        { title: '基础', route: '/list/basic' },
-        { title: 'tab切换', route: '/list/tab' },
-        { title: '左侧树', route: '/list/left-tree' },
-      ],
-    },
-    {
-      title: '表单页',
-      route: '/form',
-      icon: IconMenuForm,
-      children: [
-        { title: '两列', route: '/form/two-cols' },
-        { title: '三列', route: '/form/three-cols' },
-        { title: 'tab切换', route: '/form/tab' },
-        { title: '弹框', route: '/form/dialog' },
-        { title: '左侧树', route: '/form/left-tree' },
-      ],
-    },
-    {
-      title: '审批页',
-      route: '/workflow',
-      icon: IconMenuOa,
-      children: [
-        { title: '审批详情', route: '/workflow/todo' },
-        // { title: '已办', route: '/workflow/done' },
-      ],
-    },
-    {
-      title: '异常页',
-      route: '/exception',
-      icon: IconWarning,
-      children: [
-        { title: '403', route: '/exception/403' },
-        { title: '404', route: '/exception/404' },
-        { title: '500', route: '/exception/500' },
-      ],
     },
   ],
   user: [

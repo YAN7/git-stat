@@ -9,7 +9,9 @@
     </el-button>
     <template v-if="!hiddenDefaultBtns">
       <el-button type="primary" @click="search"> <icon-search /> 查询</el-button>
-      <el-button type="default" plain @click="reset" class="!mr-0"> <icon-reset />重置</el-button>
+      <el-button v-if="showResetBtn" type="default" plain @click="reset" class="!mr-0">
+        <icon-reset />重置</el-button
+      >
     </template>
     <slot name="afterSearch" />
   </div>
@@ -21,12 +23,16 @@ defineOptions({
   name: 'DefaultButtons',
 })
 
-defineProps<{
-  hiddenDefaultBtns?: boolean
-  schema?: any[]
-  collapsed?: boolean
-  showCollapsedBtn?: boolean
-}>()
+withDefaults(
+  defineProps<{
+    hiddenDefaultBtns?: boolean
+    schema?: any[]
+    collapsed?: boolean
+    showResetBtn?: boolean
+    showCollapsedBtn?: boolean
+  }>(),
+  { showResetBtn: true },
+)
 
 const emits = defineEmits(['toggleCollapsed', 'search', 'reset'])
 

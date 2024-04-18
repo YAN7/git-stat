@@ -1,0 +1,22 @@
+{
+  "何宇航": {
+    "addLines": 718,
+    "removeLines": 285,
+    "totalLines": 433,
+    "submitTimes": 21,
+    "projects": [
+      {
+        "startDate": "2024-04-01",
+        "endDate": "2024-04-11",
+        "addLines": 718,
+        "removeLines": 285,
+        "totalLines": 433,
+        "submitTimes": 21,
+        "projectName": "经营管理",
+        "username": "何宇航",
+        "gitUsername": "YAN7",
+        "projectCode": "itom"
+      }
+    ]
+  }
+}

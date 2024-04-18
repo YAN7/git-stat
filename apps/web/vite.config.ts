@@ -1,13 +1,13 @@
 import { fileURLToPath, URL } from 'node:url'
 
-import { defineConfig } from 'vite'
+import basicSsl from '@vitejs/plugin-basic-ssl'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
+import UnoCSS from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
+import { defineConfig } from 'vite'
 import qiankun from 'vite-plugin-qiankun'
-import UnoCSS from 'unocss/vite'
-import basicSsl from '@vitejs/plugin-basic-ssl'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -45,15 +45,10 @@ export default defineConfig({
       strict: false,
     },
     proxy: {
-      '/itom': {
+      '/git-stat': {
         changeOrigin: true,
         secure: false,
-        target: 'https://itom-st.csair.com/',
-      },
-      '/uc': {
-        changeOrigin: true,
-        secure: false,
-        target: 'https://suzaku-test.csair.com/',
+        target: 'http://localhost:3000/',
       },
     },
   },

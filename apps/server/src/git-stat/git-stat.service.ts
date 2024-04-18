@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import * as ExcelJs from 'exceljs';
-import { readFile } from 'fs/promises';
+import { readdir, readFile } from 'fs/promises';
 import { updateSubmitInfo } from 'src/utils';
 import { mkdirIfNotExist, readFile2JSON, writeFile2JSON } from 'src/utils/file';
 import { throwHttpError } from 'src/utils/http';
@@ -28,7 +28,8 @@ export class GitStatService {
     dateConfig.endDate = dateRange.endDate;
     await writeFile2JSON(DATE_CONFIG_PATH, dateConfig);
     return {
-      status: StatusCode.SUCCESS,
+      code: StatusCode.SUCCESS,
+      success: true,
       message: '设置成功',
     };
   }
@@ -36,8 +37,9 @@ export class GitStatService {
   async queryDateRange() {
     const dateRange = await readFile2JSON(DATE_CONFIG_PATH);
     return {
-      status: StatusCode.SUCCESS,
+      code: StatusCode.SUCCESS,
       message: 'success',
+      success: true,
       ...dateRange,
     };
   }
@@ -85,7 +87,7 @@ export class GitStatService {
     const currData = file ? JSON.parse(file.toString()) : {};
     const newData = updateSubmitInfo(currData, submitDto);
     await writeFile2JSON(filePath, newData);
-    return { status: StatusCode.SUCCESS, message: '提交成功' };
+    return { code: StatusCode.SUCCESS, message: '提交成功' };
   }
 
   async getSubmitInfo(dateRange: StatDateRangeDto) {
@@ -97,7 +99,8 @@ export class GitStatService {
       return throwHttpError('此时间区间提交信息不存在');
     }
     return {
-      status: StatusCode.SUCCESS,
+      code: StatusCode.SUCCESS,
+      success: true,
       data: JSON.parse(fileContent.toString()),
     };
   }
@@ -163,5 +166,18 @@ export class GitStatService {
     const buffer = await workbook.xlsx.writeBuffer().catch(console.log);
     const filename = `前端开发${startDate}至${endDate}代码统计.xlsx`;
     return { buffer, filename };
+  }
+
+  async getAllDateRange() {
+    const res = await readdir(ARCHIVE_PATH).catch(() => {
+      throwHttpError('查找失败');
+    });
+    if (res) {
+      return {
+        success: true,
+        code: StatusCode.SUCCESS,
+        data: res?.map((s) => s.replace('.json', '')),
+      };
+    }
   }
 }

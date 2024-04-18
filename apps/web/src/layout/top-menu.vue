@@ -7,16 +7,13 @@
       :ellipsis="false"
       @select="handleSelect"
     >
-      <el-menu-item index="basic">财物中心</el-menu-item>
-      <el-menu-item index="user">用户中心</el-menu-item>
-      <el-menu-item index="log">日志中心</el-menu-item>
     </el-menu>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
 import { useAppStore } from '@/stores/app'
+import { ref } from 'vue'
 
 const activeIndex = ref('basic')
 

@@ -248,9 +248,9 @@ const useDataSource = (options: Options) => {
       const { data } = await http[options.queryType!](endpoint, params)
 
       if (options.afterFetch) {
-        listSource.list = options.afterFetch(data.recordList)
+        listSource.list = options.afterFetch(data)
       } else {
-        listSource.list = data?.recordList || []
+        listSource.list = data?.data || []
       }
       listSource.total = data?.totalCount
     } finally {

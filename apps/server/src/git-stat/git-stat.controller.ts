@@ -51,4 +51,12 @@ export class GitStatController {
       .set('Content-Disposition', contentDisposition(filename))
       .send(buffer);
   }
+
+  /**
+   * 获取所有的时间区间
+   */
+  @Get('getAllDateRange')
+  async getAllDateRange() {
+    return await this.gitStatService.getAllDateRange();
+  }
 }
