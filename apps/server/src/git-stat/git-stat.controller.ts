@@ -1,4 +1,6 @@
-import { Body, Controller, Get, Post, Query } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query, Res } from '@nestjs/common';
+import * as contentDisposition from 'content-disposition';
+
 import { StatDateRangeDto } from './git-stat.dto';
 import { GitStatService } from './git-stat.service';
 
@@ -42,7 +44,11 @@ export class GitStatController {
    * 根据时间区间导出提交信息
    */
   @Get('exportSubmitInfo')
-  async exportSubmitInfo(@Query() dateRange) {
-    return await this.gitStatService.exportSubmitInfo(dateRange);
+  async exportSubmitInfo(@Query() dateRange, @Res() res) {
+    const { buffer, filename } =
+      await this.gitStatService.exportSubmitInfo(dateRange);
+    return res
+      .set('Content-Disposition', contentDisposition(filename))
+      .send(buffer);
   }
 }

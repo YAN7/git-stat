@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import * as ExcelJs from 'exceljs';
 import { readFile } from 'fs/promises';
 import { updateSubmitInfo } from 'src/utils';
 import { mkdirIfNotExist, readFile2JSON, writeFile2JSON } from 'src/utils/file';
@@ -77,7 +78,7 @@ export class GitStatService {
     this.ensureSubmitParamsCorrect(submitDto);
 
     const { startDate, endDate } = submitDto;
-    const filePath = `${ARCHIVE_PATH}/${startDate}-${endDate}.json`;
+    const filePath = `${ARCHIVE_PATH}/${startDate}_${endDate}.json`;
     const file = await readFile(filePath).catch(console.log);
 
     // 对应的json文件不存在则默认是{}
@@ -90,7 +91,7 @@ export class GitStatService {
   async getSubmitInfo(dateRange: StatDateRangeDto) {
     this.validateDateRangeParams(dateRange);
     const { startDate, endDate } = dateRange;
-    const filePath = `${ARCHIVE_PATH}/${startDate}-${endDate}.json`;
+    const filePath = `${ARCHIVE_PATH}/${startDate}_${endDate}.json`;
     const fileContent = await readFile(filePath).catch(console.log);
     if (!fileContent) {
       return throwHttpError('此时间区间提交信息不存在');
@@ -101,14 +102,66 @@ export class GitStatService {
     };
   }
 
+  transformJson2Arr(sourceJson) {
+    const result = [];
+    Object.entries(sourceJson).forEach(([name, info]: any, i) => {
+      const notes = info.projects.reduce((prev, next) => {
+        return next.notes
+          ? `${prev}${prev === '' ? '' : '\n'}${next.projectName}:${next.notes}`
+          : '';
+      }, '');
+      result[i] = [name, info.addLines, info.submitTimes, notes];
+    });
+    return result;
+  }
+
+  generateExcel(fileContent): ExcelJs.Workbook {
+    const workbook = new ExcelJs.Workbook();
+    const worksheet = workbook.addWorksheet('sheet1', {
+      properties: { defaultColWidth: 20 },
+    });
+    const data = this.transformJson2Arr(JSON.parse(fileContent.toString()));
+    const title = ['前端开发代码统计'];
+    const header = ['用户名', '新增代码行数', '提交次数', '备注'];
+    worksheet.addRow(title);
+    worksheet.addRow(header);
+    worksheet.addRows(data);
+    worksheet.mergeCells('A1:D1');
+    worksheet.getColumn(4).width = 40;
+    worksheet.eachRow((row, rowNumber) => {
+      const isHeader = rowNumber === 1;
+      row.font = {
+        size: isHeader ? 16 : 13,
+        bold: isHeader,
+      };
+      row.height = isHeader ? 40 : 28;
+      row.alignment = {
+        horizontal: 'center',
+        vertical: 'middle',
+        wrapText: true,
+      };
+      row.eachCell((cell) => {
+        cell.border = {
+          top: { style: 'thin' },
+          right: { style: 'thin' },
+          bottom: { style: 'thin' },
+          left: { style: 'thin' },
+        };
+      });
+    });
+    return workbook;
+  }
+
   async exportSubmitInfo(dateRange: StatDateRangeDto) {
     this.validateDateRangeParams(dateRange);
     const { startDate, endDate } = dateRange;
-    const filePath = `${ARCHIVE_PATH}/${startDate}-${endDate}.json`;
+    const filePath = `${ARCHIVE_PATH}/${startDate}_${endDate}.json`;
     const fileContent = await readFile(filePath).catch(console.log);
-    if (!fileContent) {
-      return throwHttpError('此时间区间提交信息不存在');
-    }
-    return 123;
+    if (!fileContent) return throwHttpError('此时间区间提交信息不存在');
+
+    const workbook = this.generateExcel(fileContent);
+    const buffer = await workbook.xlsx.writeBuffer().catch(console.log);
+    const filename = `前端开发${startDate}至${endDate}代码统计.xlsx`;
+    return { buffer, filename };
   }
 }
