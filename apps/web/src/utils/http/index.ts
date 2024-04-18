@@ -52,7 +52,10 @@ class Http {
     return res.data
   }
 
-  async get(url: string, params?: object) {
+  async get<T = any>(
+    url: string,
+    params?: object,
+  ): Promise<{ code: number; success: boolean; data: T }> {
     const res = await this.axiosInstance.get(url, { params })
     return res.data
   }

@@ -37,6 +37,11 @@ const menus: Record<string, Menu[]> = {
       route: '/dashboard',
       icon: IconHome,
     },
+    {
+      title: '设置时间区间',
+      route: '/dateSetting',
+      icon: DataBoard,
+    },
   ],
   user: [
     {

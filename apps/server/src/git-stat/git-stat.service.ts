@@ -109,8 +109,8 @@ export class GitStatService {
     const result = [];
     Object.entries(sourceJson).forEach(([name, info]: any, i) => {
       const notes = info.projects.reduce((prev, next) => {
-        return next.notes
-          ? `${prev}${prev === '' ? '' : '\n'}${next.projectName}:${next.notes}`
+        return next.note
+          ? `${prev}${prev === '' ? '' : '\n'}${next.projectName}:${next.note}`
           : '';
       }, '');
       result[i] = [name, info.addLines, info.submitTimes, notes];
