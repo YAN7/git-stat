@@ -4,7 +4,8 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"server:dev": "pnpm -C apps/server start:dev"
+		"server:dev": "pnpm -C apps/server start:dev",
+		"web:dev": "pnpm -C apps/web dev"
 	},
 	"keywords": [],
 	"author": "",

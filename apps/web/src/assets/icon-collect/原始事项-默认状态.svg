@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>原始事项-默认状态</title>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="各系统图标规范整理" transform="translate(-183.000000, -894.000000)">
+            <g id="财务中心系统" transform="translate(30.000000, 724.000000)">
+                <g id="原始事项-默认状态" transform="translate(153.000000, 170.000000)">
+                    <rect id="矩形备份-15" x="0" y="0" width="16" height="16"></rect>
+                    <g id="原始事项" transform="translate(0.145758, 0.416910)">
+                        <g id="编组-6" transform="translate(2.800232, 1.611470)" fill="#FFFFFF" opacity="0.05">
+                            <polygon id="形状-path" points="8.45611795e-15 2.82920583 5.00203024 5.54598793 10.0040604 2.82920583 5.00203024 2.01318536e-14"></polygon>
+                        </g>
+                        <path d="M7.59444172,0.844165718 L13.6940577,4.09239311 L8.00555828,8.07012 L1.90594233,4.8218926 L7.59444172,0.844165718 Z" id="多边形" stroke="#FFFFFF" stroke-width="1.2"></path>
+                        <path d="M14.7913101,7.48432869 L8.11426747,11.2997816 C7.94298355,11.3976582 7.73271085,11.3976582 7.56142694,11.2997816 L0.884384266,7.48432869" id="路径" stroke="#FFFFFF" stroke-width="1.2" stroke-linecap="round"></path>
+                        <path d="M14.7913101,10.8271858 L8.11426747,14.6426388 C7.94298355,14.7405153 7.73271085,14.7405153 7.56142694,14.6426388 L0.884384266,10.8271858" id="路径备份" stroke="#FFFFFF" stroke-width="1.2" stroke-linecap="round"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

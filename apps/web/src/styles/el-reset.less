@@ -1,0 +1,315 @@
+:root {
+	--el-color-primary: #037DF4;
+	--el-color-success: #3DB96B;
+	--el-color-warning: #F49503;
+	--el-color-danger: #FC6B6B;
+	--vp-c-green: #037DF4;
+	--el-font-weight-primary: 400;
+	
+
+	@primaryList: #1B89F4, #3496F5, #4CA2F5, #66AFF6, #7EBBF6, #96C7F7, #AFD4F7, #C8E0F8, #E0EDF8;
+
+	.loopPrimaryColor(@i) when (@i <= length(@primaryList)) {
+		--el-color-primary-light-@{i}: extract(@primaryList, @i);
+		.loopPrimaryColor(@i + 1)
+	}
+	
+	.loopPrimaryColor(1);
+
+	--el-color-success-light-4: #81D09E;
+	--el-color-success-light-8: #ADDFC0;
+
+	--el-color-warning-light-4: #F6B95C;
+	--el-color-warning-light-8: #F7D196;;
+
+	--el-color-danger-light-4: #FBA0A0;
+	--el-color-danger-light-8: #F9C1C1;;
+}
+
+#app {
+	// button
+	.el-button {
+		span>svg{
+			margin-right: 8px;
+		}
+		&.gap {
+			position: relative;
+			margin-left: 20px !important;
+			&::before {
+				position: absolute;
+				content: '';
+				top: 50%;
+				transform: translateY(-50%);
+				left: -20px;
+				width: 1px;
+				height: 20px;
+				background-color: #E1E1E1;
+			}
+		}
+		&:focus {
+			color: var(--el-button-text-color);
+			border-color: var(--el-button-border-color);
+			background-color: var(--el-button-bg-color);
+			outline: 0;
+		}
+		&.is-link {
+			&:focus {
+				color: var(--el-button-text-color);
+				background: 0 0;
+				border-color: transparent;
+			}
+		}
+	}
+
+	.el-button+.el-button {
+		margin-left: 16px;
+	}
+
+	// checkbox
+	.el-checkbox__label {
+		padding-left: 10px;
+	}
+
+	// radio
+	.el-radio {
+		margin-right: 30px;
+		// padding-left: 10px;
+		.el-radio__label {
+			padding-left: 10px;
+		}
+	}
+
+
+
+	.el-select-dropdown {
+		.el-select-dropdown__item {
+			padding-left: 10px;
+		}
+	}
+
+
+	// form 
+	.el-form-item {
+		margin-bottom: 20px;
+	}
+	.el-form-item__label {
+		padding-right: 10px;
+		color: var(--el-text-color-primary);
+	}
+	.el-form-item__error {
+		padding-top: 4px;
+	}
+
+	// transfer
+	.el-transfer-panel {
+		.el-transfer-panel__header {
+			padding-left: 20px;
+		}
+		.el-transfer-panel__item {
+			padding-left: 20px;
+			.el-checkbox__label {
+				padding-left: 24px;
+			}
+		}
+	}
+
+	.el-transfer-panel .el-transfer-panel__header .el-checkbox .el-checkbox__label span {
+		right: 20px;
+	}
+
+	.el-transfer__buttons {
+		width: 86px;
+	}
+
+	.el-transfer__buttons {
+		padding: 0 20px;
+	}
+
+	.el-transfer__button:nth-child(2) {
+		margin: 10px 0 0 0;
+	}
+
+	// pagination
+	.el-pagination.is-background {
+		--el-pagination-item-gap: 10px;
+		--el-pagination-button-bg-color: var(--el-color-white);
+		.el-pager .number {
+			border: 1px solid var(--el-fill-color);
+		}
+		.el-pagination__jump {
+			--el-pagination-item-gap: 20px;
+		}
+	}
+
+	// table
+	.el-table thead {
+		font-weight: 400;
+		--el-table-header-text-color: var(--el-text-color-primary);
+	}
+
+	.el-table th.el-table__cell,
+	.el-table.is-scrolling-left th.el-table-fixed-column--left,
+	.el-table.is-scrolling-left th.el-table-fixed-column--right,
+	.el-table__header-wrapper tr th.el-table-fixed-column--left,
+	.el-table__header-wrapper tr th.el-table-fixed-column--right,
+	.el-table.is-scrolling-right th.el-table-fixed-column--right {
+		background-color: #F5F7FD;
+	}
+
+
+	// dialog
+	.el-dialog__header {
+		padding-bottom: 0px;
+	}
+	.el-dialog__title {
+		--el-dialog-title-font-size: var(--el-font-size-medium);
+		font-weight: 700;
+	}
+
+	.el-dialog__body {
+		padding-top: 20px;
+		padding-bottom: 20px;
+	}
+	.el-dialog__footer {
+		padding-top: 0px;
+	}
+
+	// tree
+	.el-tree {
+		// --el-tree-node-hover-bg-color: var(--el-fill-color-light);
+		--el-fill-color-light: #EBF2FF;
+		--el-tree-text-color: var(--el-text-color-primary);
+	}
+
+	.el-tree-node__content {
+		height: 32px;
+		line-height: 32px;
+	}
+
+	.el-tree--highlight-current .el-tree-node.is-current>.el-tree-node__content {
+		--el-color-primary-light-9: #EBF2FF;
+	}
+
+	// breadcrumb
+	.el-breadcrumb__separator {
+		font-weight: unset;
+	}
+
+	// tabs
+	.el-tabs__nav-wrap:after {
+    height: 1px;
+	}
+	.el-tabs__header {
+		margin-bottom: 20px;;
+	}
+
+	// timeline
+	.el-timeline-item__timestamp {
+		font-size: 14px;
+	}
+	.el-timeline-item__timestamp.is-bottom {
+		margin-top: 16px;
+	}
+	.el-timeline-item {
+		padding-bottom: 40px;
+	}
+}
+
+.dark {
+	#app {
+		.el-table th.el-table__cell,
+		.el-table.is-scrolling-left th.el-table-fixed-column--left,
+		.el-table.is-scrolling-left th.el-table-fixed-column--right,
+		.el-table__header-wrapper tr th.el-table-fixed-column--left,
+		.el-table__header-wrapper tr th.el-table-fixed-column--right,
+		.el-table.is-scrolling-right th.el-table-fixed-column--right {
+			background-color: #0e0e0e;
+		}
+	}
+}
+
+	// select
+	.el-select-dropdown__item.selected {
+		font-weight: 400;
+	}
+
+	// .el-notification
+	.el-notification {
+		--el-notification-padding: 20px 26px 20px 20px;
+	}
+
+	.el-notification__group {
+		margin: 0;
+	}
+
+
+
+	// message-box
+	.el-message-box {
+		padding-bottom: 20px;
+	}
+	.el-message-box__title {
+		--el-messagebox-font-size: var(--el-font-size-medium);
+	}
+	.el-message-box__header,
+	.el-message-box__content {
+		--el-messagebox-padding-primary: 20px;
+	}
+	.el-message-box__content {
+		padding-top: 6px;
+	}
+
+	.el-message-box__btns {
+		padding: 5px 20px 0;
+	}
+
+	// button
+	.el-button {
+		span>svg{
+			margin-right: 8px;
+		}
+		&.gap {
+			position: relative;
+			margin-left: 20px !important;
+			&::before {
+				position: absolute;
+				content: '';
+				top: 50%;
+				transform: translateY(-50%);
+				left: -20px;
+				width: 1px;
+				height: 20px;
+				background-color: #E1E1E1;
+			}
+		}
+		&:focus {
+			color: var(--el-button-text-color);
+			border-color: var(--el-button-border-color);
+			background-color: var(--el-button-bg-color);
+			outline: 0;
+		}
+		&.is-link {
+			&:focus {
+				color: var(--el-button-text-color);
+				background: 0 0;
+				border-color: transparent;
+			}
+		}
+	}
+
+// cascader
+.el-input__wrapper {
+	padding: 1px 10px;
+}
+
+.el-cascader-node {
+	padding-left: 10px;
+}
+
+.el-cascader-node:not(:has(.el-checkbox)) {
+	padding-left: 2px;
+}
+
+.el-cascader-node.in-active-path, .el-cascader-node.is-active, .el-cascader-node.is-selectable.in-checked-path {
+	font-weight: 400;
+}

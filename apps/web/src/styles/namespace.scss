@@ -1,0 +1,28 @@
+$--colors: (
+  "primary": (
+    "base": #037DF4,
+  ),
+  "success": (
+    "base": #3DB96B,
+  ),
+  "warning": (
+    "base": #f2711c,
+  ),
+  "danger": (
+    "base": #FC6B6B,
+  ),
+  "error": (
+    "base": #FC6B6B,
+  ),
+);
+
+@forward 'csui/theme-chalk/src/mixins/config.scss' with (
+  $csNamespace: 'feGitStat-cs',
+  $elNamespace: 'feGitStat'
+);
+
+@forward 'csui/theme-chalk/src/common/var.scss' with (
+  $colors: $--colors
+);
+
+@use 'csui/theme-chalk/src/inner.scss';

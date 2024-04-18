@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="16px"
+   height="16px"
+   viewBox="0 0 16 16"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="test.svg"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="30.942612"
+     inkscape:cx="6.4635785"
+     inkscape:cy="6.6898037"
+     inkscape:window-width="1920"
+     inkscape:window-height="1027"
+     inkscape:window-x="1920"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg1"
+     showguides="false"
+     inkscape:lockguides="false" />
+  <defs
+     id="defs1">
+    <inkscape:path-effect
+       effect="fillet_chamfer"
+       id="path-effect10"
+       is_visible="true"
+       lpeversion="1"
+       nodesatellites_param="F,0,0,1,0,0.79769955,0,1 @ F,0,0,1,0,0.96833192,0,1 @ F,0,0,1,0,0.75562939,0,1"
+       radius="0"
+       unit="px"
+       method="auto"
+       mode="F"
+       chamfer_steps="1"
+       flexible="false"
+       use_knot_distance="true"
+       apply_no_radius="true"
+       apply_with_radius="true"
+       only_selected="false"
+       hide_knots="false" />
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath5">
+      <g
+         inkscape:label="Clip"
+         id="use5">
+        <path
+           id="path8"
+           style="fill:#4d4d4d"
+           inkscape:transform-center-x="0.23120371"
+           inkscape:transform-center-y="-0.059268865"
+           transform="translate(2.9874997,1.958472)"
+           d="m -9.3276381,3.1866663 -1.9495149,-0.4635943 -1.487108,1.3431455 -0.161529,-1.9973578 -1.736949,-0.999269 1.849685,-0.77084069 0.413614,-1.96072771 1.304697,1.5209521 1.9925771,-0.21252739 -1.0433381,1.71084079 z" />
+      </g>
+    </clipPath>
+  </defs>
+  <title
+     id="title1">左侧菜单展开按钮</title>
+  <g
+     inkscape:groupmode="layer"
+     id="layer1"
+     inkscape:label="111"
+     style="display:inline" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="sun"
+     style="display:inline" />
+  <metadata
+     id="metadata3">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>左侧菜单展开按钮</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <rect
+     style="fill:#4d4d4d;stroke-width:1.00109"
+     id="rect4-3"
+     width="15.994332"
+     height="2.4610474"
+     x="0.0020833872"
+     y="13.548278"
+     ry="0.82034916" />
+  <rect
+     style="fill:#4d4d4d;stroke-width:1.00109"
+     id="rect4-3-5"
+     width="15.994332"
+     height="2.4610474"
+     x="0.0020833872"
+     y="-1.4508056e-07"
+     ry="0.82034916" />
+  <rect
+     style="fill:#4d4d4d;stroke-width:0.809219"
+     id="rect4-3-1"
+     width="10.450861"
+     height="2.4610474"
+     x="5.5455551"
+     y="6.7077498"
+     ry="0.82034916" />
+  <path
+     sodipodi:type="star"
+     style="fill:#4d4d4d;paint-order:markers fill stroke;opacity:1"
+     id="path7"
+     inkscape:flatsided="true"
+     sodipodi:sides="3"
+     sodipodi:cx="-8.6183479"
+     sodipodi:cy="-2.7143262"
+     sodipodi:r1="2.4738212"
+     sodipodi:r2="1.2369106"
+     sodipodi:arg1="1.3681377"
+     sodipodi:arg2="2.4153353"
+     inkscape:rounded="0.01"
+     inkscape:randomized="0"
+     inkscape:transform-center-x="0.39721373"
+     inkscape:transform-center-y="0.46408404"
+     transform="rotate(101.93037,-7.5813076,6.9752837)"
+     d="M -8.6661514,-0.87216266 C -9.145171,-1.4009129 -9.8414093,-2.1840392 -10.342188,-2.756918 c -0.35115,-0.4017072 -0.203448,-0.8440025 0.319212,-0.9557064 0.7593219,-0.1622839 1.8119746,-0.3779193 2.5121638,-0.5142087 0.4084296,-0.079499 0.6520226,0.1957083 0.5245932,0.5927699 -0.2346309,0.7310946 -0.6083374,1.8556821 -0.8623524,2.5953592 -0.1426908,0.41550751 -0.5220049,0.49280225 -0.81758,0.16654134 z"
+     inkscape:path-effect="#path-effect10" />
+</svg>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>收起</title>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="各系统图标规范整理" transform="translate(-934.000000, -240.000000)">
+            <g id="经营核算管理系统" transform="translate(30.000000, 100.000000)">
+                <g id="编组-10" transform="translate(787.000000, 70.000000)">
+                    <g id="收起" transform="translate(117.000000, 70.000000)">
+                        <g id="展开">
+                            <rect id="矩形备份-13" x="0" y="0" width="16" height="16"></rect>
+                        </g>
+                        <g id="编组-3" transform="translate(7.964082, 8.072029) scale(1, -1) translate(-7.964082, -8.072029) translate(2.960155, 3.647314)" stroke="#0C9AF3" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2">
+                            <polyline id="下拉箭头" points="10.0078544 0 5.00785437 4.578564 0.00785437452 0"></polyline>
+                            <polyline id="下拉箭头备份" points="10 4.2708652 5 8.84942919 0 4.2708652"></polyline>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

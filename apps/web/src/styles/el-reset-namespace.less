@@ -1,0 +1,281 @@
+:root {
+	--feGitStat-color-primary: #037DF4;
+	--feGitStat-color-success: #3DB96B;
+	--feGitStat-color-warning: #F49503;
+	--feGitStat-color-danger: #FC6B6B;
+	--vp-c-green: #037DF4;
+	--feGitStat-font-weight-primary: 400 !important;
+	
+
+	@primaryList: #1B89F4, #3496F5, #4CA2F5, #66AFF6, #7EBBF6, #96C7F7, #AFD4F7, #C8E0F8, #E0EDF8;
+
+	.loopPrimaryColor(@i) when (@i <= length(@primaryList)) {
+		--feGitStat-color-primary-light-@{i}: extract(@primaryList, @i);
+		.loopPrimaryColor(@i + 1)
+	}
+	
+	.loopPrimaryColor(1);
+
+	--feGitStat-color-success-light-4: #81D09E;
+	--feGitStat-color-success-light-8: #ADDFC0;
+
+	--feGitStat-color-warning-light-4: #F6B95C;
+	--feGitStat-color-warning-light-8: #F7D196;;
+
+	--feGitStat-color-danger-light-4: #FBA0A0;
+	--feGitStat-color-danger-light-8: #F9C1C1;;
+}
+
+#app {
+	// button
+	.feGitStat-button {
+		span>svg{
+			margin-right: 8px;
+		}
+		&.gap {
+			position: relative;
+			margin-left: 20px !important;
+			&::before {
+				position: absolute;
+				content: '';
+				top: 50%;
+				transform: translateY(-50%);
+				left: -20px;
+				width: 1px;
+				height: 20px;
+				background-color: #E1E1E1;
+			}
+		}
+		&:focus {
+			color: var(--feGitStat-button-text-color);
+			border-color: var(--feGitStat-button-border-color);
+			background-color: var(--feGitStat-button-bg-color);
+			outline: 0;
+		}
+		&.is-link {
+			&:focus {
+				color: var(--feGitStat-button-text-color);
+				background: 0 0;
+				border-color: transparent;
+			}
+		}
+	}
+
+	.feGitStat-button+.feGitStat-button {
+		margin-left: 16px;
+	}
+
+	// checkbox
+	.feGitStat-checkbox__label {
+		padding-left: 10px;
+	}
+
+	// radio
+	.feGitStat-radio {
+		margin-right: 30px;
+		// padding-left: 10px;
+		.feGitStat-radio__label {
+			padding-left: 10px;
+		}
+	}
+
+
+
+	.feGitStat-select-dropdown {
+		.feGitStat-select-dropdown__item {
+			padding-left: 10px;
+		}
+	}
+
+
+	// form 
+	.feGitStat-form-item {
+		margin-bottom: 20px;
+	}
+	.feGitStat-form-item__label {
+		padding-right: 10px;
+		color: var(--feGitStat-text-color-primary);
+	}
+
+	.feGitStat-form-item__error {
+		padding-top: 4px;
+	}
+
+	// transfer
+	.feGitStat-transfer-panel {
+		.feGitStat-transfer-panel__header {
+			padding-left: 20px;
+		}
+		.feGitStat-transfer-panel__item {
+			padding-left: 20px;
+			.feGitStat-checkbox__label {
+				padding-left: 24px;
+			}
+		}
+	}
+
+	.feGitStat-transfer-panel .feGitStat-transfer-panel__header .feGitStat-checkbox .feGitStat-checkbox__label span {
+		right: 20px;
+	}
+
+	.feGitStat-transfer__buttons {
+		width: 86px;
+	}
+
+	.feGitStat-transfer__buttons {
+		padding: 0 20px;
+	}
+
+	.feGitStat-transfer__button:nth-child(2) {
+		margin: 10px 0 0 0;
+	}
+
+	// pagination
+	.feGitStat-pagination.is-background {
+		--feGitStat-pagination-item-gap: 10px;
+		--feGitStat-pagination-button-bg-color: var(--feGitStat-color-white);
+		.feGitStat-pager .number {
+			border: 1px solid var(--feGitStat-fill-color);
+		}
+		.feGitStat-pagination__jump {
+			--feGitStat-pagination-item-gap: 20px;
+		}
+	}
+
+	// table
+	.feGitStat-table thead {
+		font-weight: 400;
+		--feGitStat-table-header-text-color: var(--feGitStat-text-color-primary);
+	}
+
+	.feGitStat-table th.feGitStat-table__cell,
+	.feGitStat-table.is-scrolling-left th.feGitStat-table-fixed-column--left,
+	.feGitStat-table.is-scrolling-left th.feGitStat-table-fixed-column--right,
+	.feGitStat-table__header-wrapper tr th.feGitStat-table-fixed-column--left,
+	.feGitStat-table__header-wrapper tr th.feGitStat-table-fixed-column--right,
+	.feGitStat-table.is-scrolling-right th.feGitStat-table-fixed-column--right {
+		background-color: #F5F7FD;
+	}
+
+
+	// dialog
+	.feGitStat-dialog__header {
+		padding-bottom: 0px;
+	}
+	.feGitStat-dialog__title {
+		--feGitStat-dialog-title-font-size: var(--feGitStat-font-size-medium);
+		font-weight: 700;
+	}
+
+	.feGitStat-dialog__body {
+		padding-top: 20px;
+		padding-bottom: 20px;
+	}
+
+	.feGitStat-dialog__footer {
+		padding-top: 0px;
+	}
+
+	// tree
+	.feGitStat-tree {
+		// --feGitStat-tree-node-hover-bg-color: var(--feGitStat-fill-color-light);
+		--feGitStat-fill-color-light: #EBF2FF;
+		--feGitStat-tree-text-color: var(--feGitStat-text-color-primary);
+	}
+
+	.feGitStat-tree-node__content {
+		height: 32px;
+		line-height: 32px;
+	}
+
+	.feGitStat-tree--highlight-current .feGitStat-tree-node.is-current>.feGitStat-tree-node__content {
+		--feGitStat-color-primary-light-9: #EBF2FF;
+	}
+
+	// breadcrumb
+	.feGitStat-breadcrumb__separator {
+		font-weight: unset;
+	}
+
+	// tabs
+	.feGitStat-tabs__nav-wrap:after {
+    height: 1px;
+	}
+	.feGitStat-tabs__header {
+		margin-bottom: 20px;;
+	}
+
+	// timeline
+	.feGitStat-timeline-item__timestamp {
+		font-size: 14px;
+	}
+	.feGitStat-timeline-item__timestamp.is-bottom {
+		margin-top: 16px;
+	}
+	.feGitStat-timeline-item {
+		padding-bottom: 40px;
+	}
+}
+
+.dark {
+	#app {
+		.feGitStat-table th.feGitStat-table__cell,
+		.feGitStat-table.is-scrolling-left th.feGitStat-table-fixed-column--left,
+		.feGitStat-table.is-scrolling-left th.feGitStat-table-fixed-column--right,
+		.feGitStat-table__header-wrapper tr th.feGitStat-table-fixed-column--left,
+		.feGitStat-table__header-wrapper tr th.feGitStat-table-fixed-column--right,
+		.feGitStat-table.is-scrolling-right th.feGitStat-table-fixed-column--right {
+			background-color: #0e0e0e;
+		}
+	}
+}
+
+// select
+.feGitStat-select-dropdown__item.selected {
+	font-weight: 400;
+}
+
+// .feGitStat-notification
+.feGitStat-notification {
+	--feGitStat-notification-padding: 20px 26px 20px 20px;
+}
+
+.feGitStat-notification__group {
+	margin: 0;
+}
+
+// message-box
+.feGitStat-message-box {
+	padding-bottom: 20px;
+}
+.feGitStat-message-box__title {
+	--feGitStat-messagebox-font-size: var(--feGitStat-font-size-medium);
+}
+.feGitStat-message-box__header,
+.feGitStat-message-box__content {
+	--feGitStat-messagebox-padding-primary: 20px;
+}
+.feGitStat-message-box__content {
+	padding-top: 6px;
+}
+
+.feGitStat-message-box__btns {
+	padding: 5px 20px 0;
+}
+
+// cascader
+.feGitStat-input__wrapper {
+	padding: 1px 10px;
+}
+
+.feGitStat-cascader-node {
+	padding-left: 10px;
+}
+
+.feGitStat-cascader-node:not(:has(.feGitStat-checkbox)) {
+	padding-left: 2px;
+}
+
+.feGitStat-cascader-node.in-active-path, .feGitStat-cascader-node.is-active, .feGitStat-cascader-node.is-selectable.in-checked-path {
+	font-weight: 400;
+}

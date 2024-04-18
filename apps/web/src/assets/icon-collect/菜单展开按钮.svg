@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" id="svg1" sodipodi:docname="菜单展开按钮.svg"
+	inkscape:version="1.3.2 (091e20e, 2023-11-25)" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+	xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg"
+	xmlns:svg="http://www.w3.org/2000/svg">
+	<defs id="defs1" />
+	<sodipodi:namedview id="namedview1" pagecolor="#ffffff" bordercolor="#000000" borderopacity="0.25" inkscape:showpageshadow="2"
+		inkscape:pageopacity="0.0" inkscape:pagecheckerboard="0" inkscape:deskcolor="#d1d1d1" inkscape:zoom="47.9375" inkscape:cx="8"
+		inkscape:cy="7.9895698" inkscape:window-width="1920" inkscape:window-height="1027" inkscape:window-x="1920" inkscape:window-y="25"
+		inkscape:window-maximized="1" inkscape:current-layer="svg1" />
+	<title id="title1">菜单收缩按钮</title>
+	<g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" inkscape:label="页面-1">
+		<g id="各系统图标规范整理" transform="translate(-510.000000, -257.000000)">
+			<g id="经营核算管理系统" transform="translate(30.000000, 100.000000)">
+				<g id="编组-9" transform="translate(394.000000, 70.000000)">
+					<g id="g1" transform="translate(86.000000, 87.000000)">
+						<rect id="矩形备份-21" x="0" y="0" width="16" height="16" />
+						<g id="编组-5" transform="translate(0.291326, 0.384380)" fill="#FFFFFF">
+							<g id="菜单收缩按钮" transform="translate(0.000000, 5.102494)" fill-rule="nonzero">
+								<path id="路径"
+									d="m 12.35956,5.4307818 c 0.102916,-0.00361 0.204349,-0.034019 0.291016,-0.091797 l 2.425781,-2.0800781 c 0.231111,-0.2311109 0.231111,-0.6923962 0,-1.0390625 L 12.650576,0.13976622 c -0.346667,-0.3466664 -0.925782,6.688e-4 -0.925782,0.4628906 V 4.8780474 c 0,0.3466663 0.326016,0.5635677 0.634766,0.5527344 z M 8.4005756,3.5323443 c 0.3313706,0 0.5996094,-0.2682389 0.5996094,-0.5996094 0,-0.3313705 -0.2682388,-0.5996094 -0.5996094,-0.5996094 H 0.59979459 c -0.331371,0 -0.59961,0.2682389 -0.59961,0.5996094 0,0.3313705 0.268239,0.5996094 0.59961,0.5996094 H 6.04706 Z" />
+							</g>
+							<path
+								d="M0.849415607,0 L14.6494156,0 C14.9807865,-1.7189414e-16 15.2494156,0.26862915 15.2494156,0.6 C15.2494156,0.93137085 14.9807865,1.2 14.6494156,1.2 L10.3258525,1.2 L10.3258525,1.2 L0.849415607,1.2 C0.518044757,1.2 0.249415607,0.93137085 0.249415607,0.6 C0.249415607,0.26862915 0.518044757,6.08718376e-17 0.849415607,0 Z"
+								id="矩形备份-18" transform="translate(7.749416, 0.600000) rotate(-180.000000) translate(-7.749416, -0.600000) " />
+							<path
+								d="M0.849415607,14 L14.6494156,14 C14.9807865,14 15.2494156,14.2686292 15.2494156,14.6 C15.2494156,14.9313708 14.9807865,15.2 14.6494156,15.2 L10.3258525,15.2 L10.3258525,15.2 L0.849415607,15.2 C0.518044757,15.2 0.249415607,14.9313708 0.249415607,14.6 C0.249415607,14.2686292 0.518044757,14 0.849415607,14 Z"
+								id="矩形备份-19" transform="translate(7.749416, 14.600000) rotate(-180.000000) translate(-7.749416, -14.600000) " />
+						</g>
+					</g>
+				</g>
+			</g>
+		</g>
+	</g>
+</svg>

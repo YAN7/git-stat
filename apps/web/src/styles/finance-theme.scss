@@ -1,0 +1,6 @@
+@forward 'finance-theme/styles/config/config.scss' with (
+  $namespace: 'feGitStat'
+);
+
+@use 'finance-theme/styles/base.scss'
+
