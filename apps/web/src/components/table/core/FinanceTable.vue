@@ -24,7 +24,13 @@
       </template>
       <template #rightAction> </template>
     </finance-search-bar>
-    <cs-table v-loading="loading" :data="listSource.list" size="large" v-bind="$attrs">
+    <cs-table
+      v-loading="loading"
+      :data="listSource.list"
+      size="large"
+      ref="csTableRef"
+      v-bind="$attrs"
+    >
       <template v-for="col in computedColumns" :key="col.key">
         <cs-table-column
           v-if="col.type === 'index'"
@@ -74,6 +80,8 @@
 import { onMounted, ref } from 'vue'
 import FinanceSearchBar from './components/SearchBar.vue'
 
+import useInstance from '@/hooks/useInstance'
+import { CsTable } from 'csui'
 import useColumns from './hooks/useColumns'
 import useDataSource from './hooks/useDataSource'
 import useLoading from './hooks/useLoading'
@@ -112,6 +120,7 @@ const props = withDefaults(
 )
 
 const searchFormRef = ref()
+const csTableRef = useInstance<typeof CsTable>()
 
 const { pagination, setPagination } = usePagination()
 const { cachedSearchModel } = useSearchForm(props.formModel)
@@ -183,5 +192,6 @@ defineExpose({
   resetAll,
   setLoading,
   listSource,
+  csTableRef,
 })
 </script>

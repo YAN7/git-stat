@@ -18,19 +18,22 @@ export const useTable = () => {
       title: '新增代码行数',
       prop: 'addLines',
       sortable: true,
-      formatter: (row: ModelTypes) => h('span', { class: 'text-green-500' }, row.addLines),
+      formatter: (row: ModelTypes) =>
+        h('span', { style: { color: 'rgb(34 197 94)' } }, row.addLines),
     },
     {
       title: '删除代码行数',
       prop: 'removeLines',
       sortable: true,
-      formatter: (row: ModelTypes) => h('span', { class: 'text-red-5' }, row.removeLines),
+      formatter: (row: ModelTypes) =>
+        h('span', { style: { color: 'rgb(239 68 68)' } }, row.removeLines),
     },
     {
       title: '汇总代码行数',
       prop: 'totalLines',
       sortable: true,
-      formatter: (row: ModelTypes) => h('span', { class: 'text-yellow-5' }, row.totalLines),
+      formatter: (row: ModelTypes) =>
+        h('span', { style: { color: 'rgb(234 179 8)' } }, row.totalLines),
     },
     { title: '提交次数', sortable: true, prop: 'submitTimes' },
     { title: '备注', prop: 'note' },

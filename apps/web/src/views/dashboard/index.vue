@@ -23,8 +23,12 @@
       "
     >
       <template #leftAction>
+        <el-button type="primary" :disabled="!list.length" @click="toggleRowExpansion">
+          <component :is="isExpend ? IconArrowDown : IconArrowRight" />
+          {{ isExpend ? '收起' : '展开' }}全部</el-button
+        >
         <el-button
-          class="text-yellow-4"
+          class="text-yellow-5"
           type="primary"
           :disabled="!model.dateRange"
           @click="onExport"
@@ -35,31 +39,35 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { IconExport } from '@/components/icons'
+import { IconArrowDown, IconArrowRight, IconExport } from '@/components/icons'
 import { FinanceTable } from '@/components/table'
 import { ref } from 'vue'
-import { useTable } from './useTable'
-
+import { useExpend, useTable } from './hooks'
 defineOptions({
   name: 'ListCrud',
 })
 
-const { model, schema, columns } = useTable()
-
 const tableRef = ref<InstanceType<typeof FinanceTable>>()
+const list = ref<any>([])
+
+const { model, schema, columns } = useTable()
+const { isExpend, toggleRowExpansion } = useExpend(list, tableRef)
 
 const handleRecord = (res) => {
-  return Object.entries(res).map(([username, info]: any) => {
+  const result = Object.entries(res).map(([username, info]: any) => {
     const item = { ...info, username, id: Math.random() }
     if (item.projects) {
       item.gitUsername = item.projects?.[0].gitUsername
       item.projects = item.projects.map((p) => {
         const { gitUsername, username, ...rest } = p
-        return { ...rest, id: Math.random() }
+        return { ...rest, gitUsername, username, id: Math.random() }
       })
     }
     return item
   })
+  list.value = result
+  isExpend.value = false
+  return result
 }
 
 const onExport = async () => {
