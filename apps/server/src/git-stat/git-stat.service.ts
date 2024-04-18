@@ -152,6 +152,13 @@ export class GitStatService {
         };
       });
     });
+    worksheet.getColumn(4).eachCell((cell, cellNumber) => {
+      cell.alignment = {
+        horizontal: cellNumber === 1 || cellNumber === 2 ? 'center' : 'left',
+        vertical: 'middle',
+        wrapText: true,
+      };
+    });
     return workbook;
   }
 
