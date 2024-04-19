@@ -71,7 +71,7 @@ const handleRecord = (res) => {
 }
 
 const onExport = async () => {
-  const url = `http://localhost:3000/git-stat/exportSubmitInfo?startDate=${
+  const url = `https://itom-test.csair.com/git-stat/exportSubmitInfo?startDate=${
     model.dateRange.split('_')[0]
   }&endDate=${model.dateRange.split('_')[1]}`
   window.open(url)

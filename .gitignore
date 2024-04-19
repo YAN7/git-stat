@@ -21,6 +21,8 @@ coverage
 auto-imports.d.ts
 components.d.ts
 
+feGitStat-app
+
 /cypress/videos/
 /cypress/screenshots/
 
