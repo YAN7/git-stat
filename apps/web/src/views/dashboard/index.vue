@@ -6,6 +6,7 @@
       ref="tableRef"
       row-key="id"
       border
+      :max-height="600"
       :show-reset-btn="false"
       :columns="columns"
       :form-model="model"

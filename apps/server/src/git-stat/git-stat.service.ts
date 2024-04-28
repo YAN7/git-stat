@@ -111,9 +111,9 @@ export class GitStatService {
       const notes = info.projects.reduce((prev, next) => {
         return next.note
           ? `${prev}${prev === '' ? '' : '\n'}${next.projectName}:${next.note}`
-          : '';
+          : prev;
       }, '');
-      result[i] = [name, info.addLines, info.submitTimes, notes];
+      result[i] = [name, info.submitTimes, info.addLines, notes];
     });
     return result;
   }
@@ -124,8 +124,8 @@ export class GitStatService {
       properties: { defaultColWidth: 20 },
     });
     const data = this.transformJson2Arr(JSON.parse(fileContent.toString()));
-    const title = ['前端开发代码统计'];
-    const header = ['用户名', '新增代码行数', '提交次数', '备注'];
+    const title = ['前端开发代码统计111'];
+    const header = ['用户名', '提交次数', '新增代码行数', '备注'];
     worksheet.addRow(title);
     worksheet.addRow(header);
     worksheet.addRows(data);
@@ -171,7 +171,7 @@ export class GitStatService {
 
     const workbook = this.generateExcel(fileContent);
     const buffer = await workbook.xlsx.writeBuffer().catch(console.log);
-    const filename = `前端开发${startDate}至${endDate}代码统计.xlsx`;
+    const filename = `前端开发${startDate}至${endDate}代码量统计.xlsx`;
     return { buffer, filename };
   }
 
