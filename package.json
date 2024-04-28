@@ -4,9 +4,8 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"server:dev": "pnpm -C apps/server start:dev",
-		"web:dev": "pnpm -C apps/web dev",
-		"git:stat": "node git-stat.mjs"
+		"server": "pnpm --filter git-stat-server",
+		"web": "pnpm --filter git-stat-web"
 	},
 	"keywords": [],
 	"author": "",
