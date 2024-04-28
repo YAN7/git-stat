@@ -1,5 +1,5 @@
 import { HttpException, HttpStatus } from '@nestjs/common';
-import { StatusCode } from 'src/git-stat/emun';
+import { StatusCode } from 'src/enums/index';
 
 export const throwHttpError = (
   message,

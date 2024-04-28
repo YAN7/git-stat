@@ -4,7 +4,7 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"server": "pnpm --filter git-stat-server",
+		"backend": "pnpm --filter git-stat-server",
 		"web": "pnpm --filter git-stat-web"
 	},
 	"keywords": [],

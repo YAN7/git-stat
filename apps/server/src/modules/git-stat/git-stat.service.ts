@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import * as ExcelJs from 'exceljs';
 import { readdir, readFile } from 'fs/promises';
+import { StatusCode } from 'src/enums';
 import { updateSubmitInfo } from 'src/utils';
 import { mkdirIfNotExist, readFile2JSON, writeFile2JSON } from 'src/utils/file';
 import { throwHttpError } from 'src/utils/http';
 import { ARCHIVE_PATH, DATE_CONFIG_PATH } from './constants';
-import { StatusCode } from './emun';
 import { GitStatSubmitDto, StatDateRangeDto } from './git-stat.dto';
 import { SubmitPramsKey } from './git-stat.types';
 

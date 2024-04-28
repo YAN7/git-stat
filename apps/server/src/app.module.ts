@@ -2,12 +2,13 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { GitCommitModule } from './modules/git-commit/git-commit.module';
 import { GitStatModule } from './modules/git-stat/git-stat.module';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      type: 'mssql',
+      type: 'mysql',
       host: 'localhost',
       port: 3306,
       username: 'common_user',
@@ -18,6 +19,7 @@ import { GitStatModule } from './modules/git-stat/git-stat.module';
       synchronize: false,
     }),
     GitStatModule,
+    GitCommitModule,
   ],
   controllers: [AppController],
   providers: [AppService],
