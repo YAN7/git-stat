@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { GitStatModule } from './git-stat/git-stat.module';
+import { GitStatModule } from './modules/git-stat/git-stat.module';
 
 @Module({
   imports: [
