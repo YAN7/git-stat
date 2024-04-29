@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { GitCommitDto } from './git-commit.dto';
 import { GitCommit } from './git-commit.entity';
 
 @Injectable()
@@ -14,10 +15,10 @@ export class GitCommitService {
     return await this.gitCommitRepository.find();
   }
 
-  async add() {
-    return await this.gitCommitRepository.insert({
-      month: '2024',
-      projectName: 'itom',
-    });
+  async add(gitCommitDto: GitCommitDto) {
+    const transformedGitCommitDto =
+      this.gitCommitRepository.create(gitCommitDto);
+    console.log('transformedGitCommitDto ==> ', transformedGitCommitDto);
+    return await this.gitCommitRepository.save(transformedGitCommitDto);
   }
 }

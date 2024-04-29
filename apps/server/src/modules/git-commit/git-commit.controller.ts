@@ -1,12 +1,13 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
+import { GitCommitDto } from './git-commit.dto';
 import { GitCommitService } from './git-commit.service';
 
-@Controller('git-commit')
+@Controller('commit')
 export class GitCommitController {
   constructor(private readonly gitCommitService: GitCommitService) {}
 
-  @Get('add')
-  async add() {
-    return await this.gitCommitService.add();
+  @Post('add')
+  async add(@Body() gitCommitDto: GitCommitDto) {
+    return await this.gitCommitService.add(gitCommitDto);
   }
 }

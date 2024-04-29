@@ -4,7 +4,7 @@ import * as contentDisposition from 'content-disposition';
 import { StatDateRangeDto } from './git-stat.dto';
 import { GitStatService } from './git-stat.service';
 
-@Controller('git-stat')
+@Controller('')
 export class GitStatController {
   constructor(private readonly gitStatService: GitStatService) {}
 

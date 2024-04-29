@@ -2,9 +2,13 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { GitCommit } from './modules/git-commit/git-commit.entity';
 import { GitCommitModule } from './modules/git-commit/git-commit.module';
 import { GitStatModule } from './modules/git-stat/git-stat.module';
+
+console.log(
+  '111 ==> ',
+  __dirname + '/modules/git-commit/git-commit.entity.{js,ts}}',
+);
 
 @Module({
   imports: [
@@ -15,7 +19,8 @@ import { GitStatModule } from './modules/git-stat/git-stat.module';
       username: 'root',
       password: 'Aa3211!@#',
       database: 'git_stat',
-      entities: [GitCommit],
+      // entities: ['/src/**/*.entity.{ts,js}'],
+      entities: [__dirname + '/**/*.entity.{js,ts}'],
       // 定义数据库表结构与实体类字段一致（一旦数据库少了字段就会自动加入，谨慎使用，可能会导致数据丢失）
       synchronize: false,
     }),

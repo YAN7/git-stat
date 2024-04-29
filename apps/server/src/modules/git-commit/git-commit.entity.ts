@@ -37,7 +37,10 @@ export class GitCommit {
   @Column({ name: 'add_lines' })
   addLines: number;
 
-  @CreateDateColumn({ name: 'create_time' })
+  @CreateDateColumn({
+    name: 'create_time',
+    type: 'datetime',
+  })
   createTime: Date;
 
   @Column({ name: 'commit_at' })

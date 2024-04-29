@@ -48,8 +48,8 @@ export default defineConfig({
       '/git-stat': {
         changeOrigin: true,
         secure: false,
-        // target: 'http://localhost:5188/',
-        target: 'https://itom-test.csair.com',
+        target: 'http://localhost:5188/',
+        // target: 'https://itom-test.csair.com',
       },
     },
   },
