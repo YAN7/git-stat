@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import * as dayjs from 'dayjs';
 import { Repository } from 'typeorm';
 import { GitCommitDto } from './git-commit.dto';
 import { GitCommit } from './git-commit.entity';
@@ -16,9 +17,7 @@ export class GitCommitService {
   }
 
   async add(gitCommitDto: GitCommitDto) {
-    const transformedGitCommitDto =
-      this.gitCommitRepository.create(gitCommitDto);
-    console.log('transformedGitCommitDto ==> ', transformedGitCommitDto);
-    return await this.gitCommitRepository.save(transformedGitCommitDto);
+    const createTime = dayjs().format('YYYY-MM-DD hh:mm:ss');
+    return await this.gitCommitRepository.save({ ...gitCommitDto, createTime });
   }
 }
