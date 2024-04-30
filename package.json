@@ -5,7 +5,8 @@
 	"main": "index.js",
 	"scripts": {
 		"backend": "pnpm --filter git-stat-server",
-		"web": "pnpm --filter git-stat-web"
+		"web": "pnpm --filter git-stat-web",
+		"git:stat": "node git-stat.mjs"
 	},
 	"keywords": [],
 	"author": "",

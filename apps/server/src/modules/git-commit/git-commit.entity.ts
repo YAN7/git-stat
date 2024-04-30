@@ -1,9 +1,4 @@
-import {
-  Column,
-  CreateDateColumn,
-  Entity,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({ name: 'cr_commit_detail' })
 export class GitCommit {
@@ -37,11 +32,10 @@ export class GitCommit {
   @Column({ name: 'add_lines' })
   addLines: number;
 
-  @CreateDateColumn({
+  @Column({
     name: 'create_time',
-    type: 'datetime',
   })
-  createTime: Date;
+  createTime: string;
 
   @Column({ name: 'commit_at' })
   commitAt: string;
